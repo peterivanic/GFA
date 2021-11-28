@@ -1,0 +1,43 @@
+ul {
+    list-style-type: none;
+    margin: 10px;
+    padding: 40px;
+    background-color: #333333;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: larger;
+    border: 10px;
+  }
+
+li a {
+    display: inline;
+    color: #ff0099;
+    float: right;
+    padding: 15px 15px;
+    border: 10px;
+    text-decoration: none;
+  }
+ h3{
+     color: #ff0099;
+     
+ }
+h2{
+  text-align: center;
+}
+
+  div{
+
+    font-family: 'Courier New', Courier, monospace;
+    font-size: large;
+       padding: 20px 10%;
+  }
+
+  body,html{
+    background-image: url(../myFirstWebsite/assets/topography.png);
+    height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  h5{
+    text-align: center;
+  }
