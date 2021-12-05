@@ -1,5 +1,7 @@
 public class MultiplicationTable {
     public static void main(String[] args) {
+        // Create a program
+        // that prints the multiplication table with number
         int number = 15;
         multiplicationTable(number);
     }
