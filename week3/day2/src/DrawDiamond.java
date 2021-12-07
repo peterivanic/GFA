@@ -15,16 +15,26 @@ public class DrawDiamond {
 //
 // The diamond should have as many lines as the number was
     private static void drawDiamond(int line) {
-        for (int i=1; i<=line; i++ ){
-            for (int j=line; j>i; j-- ){
+        for (int i = 1; i <= line / 2 + 1; i++) {
+            for (int j = 1; j <= line - i; j++) {
                 System.out.print(" ");
             }
-            for (int k=i; k<=2*i-1; k++){
+
+            for (int j = 1; j <= i * 2 - 1; j++) {
                 System.out.print("*");
             }
-            System.out.print("\n");
-        }
+            System.out.println();
 
+        }
+        for (int i = (line / 2); i > 0; i--) {
+            for (int j = 1; j <= line - i; j++) {
+                System.out.print(" ");
+            }
+            for (int j = 1; j <= i * 2 - 1; j++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
     }
 
     public static void main(String[] args) {
