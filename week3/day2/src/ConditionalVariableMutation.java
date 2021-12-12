@@ -16,11 +16,15 @@ public class ConditionalVariableMutation {
         // if more than 20 set out2 to "More!"
         if (b > 10 && b < 20){
             output2 = "Sweet!";
-        }if (b < 10){
-            output2 = "Less!";
-        }if (b > 20){
-            output2 = "More!";
+        }else {
+            if (b < 10){
+                output2 = "Less!";
+            }
+            if (b > 20){
+                output2 = "More!";
+            }
         }
+
         System.out.println(output2);
 
 
@@ -38,8 +42,6 @@ public class ConditionalVariableMutation {
             c = c - 2;
         }if (credits <= 50 && isBonus == false){
             c = c - 1;
-        }if (isBonus){
-            c = c;
         }
         System.out.println(c);
 
