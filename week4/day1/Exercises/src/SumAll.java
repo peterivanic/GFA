@@ -8,5 +8,6 @@ public class SumAll {
         for (int i : numbers){
             sum += i;
         }
+        System.out.println(sum);
     }
 }
