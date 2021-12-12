@@ -16,26 +16,21 @@ public class GuessTheNumber {
         int number = sc.nextInt();
         System.out.println("Please insert the guess number:");
         int guessNumber = sc.nextInt();
-        if (number == guessNumber) {
-            System.out.println("You found the number: " + guessNumber);
-        } else {
+
+        while (guessNumber != number) {
+
             if (guessNumber < number) {
                 System.out.println("The stored number is higher");
-            } else {
+            }
+            if (guessNumber > number) {
                 System.out.println("The stored number is lower");
             }
-            while (guessNumber != number) {
-                System.out.println("Please insert the next guess number:");
-                guessNumber = sc.nextInt();
-                if (guessNumber < number) {
-                    System.out.println("The stored number is higher");
-                } else if (guessNumber > number) {
-                    System.out.println("The stored number is lower");
-                }
-            }
-            System.out.println("You found the number: " + guessNumber);
+            System.out.println("Please insert the next guess number:");
+            guessNumber = sc.nextInt();
         }
+        System.out.println("You found the number: " + guessNumber);
     }
+
 
     public static void main(String[] args) {
         guessTheNumber();
