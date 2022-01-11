@@ -11,7 +11,8 @@ public class ListIntroduction2 {
         System.out.println(listA.contains("Durian"));
 
 
-        listA.add(4,"Kiwifruit");
+        listA.add("Kiwifruit");
+        listB.remove("Durian");
 
 
     }
