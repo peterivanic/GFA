@@ -3,6 +3,7 @@ import java.util.Map;
 import java.util.Objects;
 
 public interface MapIntroduction2 {
+
     public static void main(String[] args) {
 //        Create a map where the keys are strings and the values are strings with the following initial values
         Map<String, String> myMap = new HashMap<>();
