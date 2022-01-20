@@ -1,6 +1,7 @@
 public class Counter {
 
     public int counter = 0;
+    public int initialValue = 0;
 
     public Counter() {
 
@@ -8,6 +9,7 @@ public class Counter {
 
     public Counter(int counter) {
         this.counter = counter;
+        this.initialValue = counter;
     }
 
     public void add(){
@@ -18,12 +20,12 @@ public class Counter {
         counter +=value;
     }
 
-    public int getCounter() {
+    public int get() {
         return counter;
     }
 
     public void reset(){
-        counter = 0;
+        counter = initialValue;
     }
 
     public static void main(String[] args) {
