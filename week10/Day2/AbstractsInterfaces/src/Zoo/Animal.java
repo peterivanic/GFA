@@ -1,6 +1,8 @@
 package Zoo;
 
-public abstract class Animal {
+import Flyable.Flyable;
+
+public abstract class Animal implements Flyable {
     String name;
     int age;
     String gender;
@@ -17,5 +19,20 @@ public abstract class Animal {
 
     public String breed(){
         return null;
+    }
+
+    @Override
+    public void land() {
+
+    }
+
+    @Override
+    public void fly() {
+
+    }
+
+    @Override
+    public void takeOff() {
+
     }
 }
