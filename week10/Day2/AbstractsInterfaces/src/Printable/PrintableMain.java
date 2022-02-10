@@ -28,9 +28,5 @@ public class PrintableMain {
             t.printAllFields();
         }
 
-
-
-
-
     }
 }
