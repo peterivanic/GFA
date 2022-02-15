@@ -8,7 +8,7 @@ class ApplesTestTest {
     @Test
     public void getAppleOk(){
         var apple = new Apple();
-        var excepted = "ap";
+        var excepted = "apple";
         var actual = apple.getApple();
 
         assertEquals(excepted,actual);
