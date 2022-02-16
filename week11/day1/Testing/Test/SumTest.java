@@ -31,4 +31,29 @@ class SumTest {
         assertEquals(excepted,actual);
     }
 
+    @Test
+    public void sumOne(){
+        ArrayList<Integer> numbers = new ArrayList<>();
+        numbers.add(1);
+        Sum sum = new Sum();
+        var excepted = 1;
+        var actual = sum.sum(numbers);
+
+        assertEquals(excepted,actual);
+    }
+
+    @Test
+    public void sumMulti(){
+        ArrayList<Integer> numbers = new ArrayList<>();
+        numbers.add(2);
+        numbers.add(2);
+        numbers.add(3);
+        Sum sum = new Sum();
+        var excepted = 7;
+        var actual = sum.sum(numbers);
+
+        assertEquals(excepted,actual);
+    }
+
+
 }
