@@ -2,7 +2,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ApplesTestTest {
+class ApplesTest {
 
     @Test
     public void getAppleOk(){
