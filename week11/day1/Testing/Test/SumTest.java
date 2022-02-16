@@ -18,7 +18,17 @@ class SumTest {
         var actual = sum.sum(numbers);
 
         assertEquals(excepted,actual);
+    }
 
+    @Test
+    public void sumEmpty(){
+        ArrayList<Integer> numbers = new ArrayList<>();
+
+        Sum sum = new Sum();
+        int excepted = 0;
+        var actual = sum.sum(numbers);
+
+        assertEquals(excepted,actual);
     }
 
 }
