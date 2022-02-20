@@ -58,7 +58,7 @@ public class Tasks {
 
         List<String> lines = Files.readAllLines(path);
         if (indexOfCheck>lines.size()){
-            System.err.println("Unable to remove: index is out of bound");
+            System.err.println("Unable to check: index is out of bound");
         }else {
         String newS = lines.get(indexOfCheck-1).replace("[ ]","[x]");
         lines.remove(indexOfCheck-1);
