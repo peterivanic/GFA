@@ -6,11 +6,14 @@ public class StreamUtils {
 
     public static void main(String[] args) {
         List<Integer> numbers1 = Arrays.asList(1, 3, -2, -4, -7, -3, -8, 12, 19, 6, 9, 10, 14);
+        List<Integer> numbers2 = Arrays.asList(3, 9, 2, 8, 6, 5);
+
+
         System.out.println(evenNumbers(numbers1));
         System.out.println(squaresOfPositiveNumbers(numbers1));
-        List<Integer> numbers2 = Arrays.asList(3, 9, 2, 8, 6, 5);
-        System.out.println(squaresIsGreater(numbers2,20));
 
+        System.out.println(squaresIsGreater(numbers2,20));
+        System.out.println(averageOddNumbers(numbers1));
     }
 
     public static List<Integer> evenNumbers(List<Integer> list) {
@@ -32,4 +35,10 @@ public class StreamUtils {
                 .toList();
     }
 
+    public static OptionalDouble averageOddNumbers(List<Integer> listOfNumbers) {
+        return listOfNumbers.stream()
+                .filter(x -> x % 2 != 0)
+                .mapToDouble(x -> Double.parseDouble(String.valueOf(x)))
+                .average();
+    }
 }
