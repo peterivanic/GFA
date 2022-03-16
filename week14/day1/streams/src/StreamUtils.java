@@ -1,6 +1,8 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.OptionalDouble;
+import java.util.stream.Stream;
 
 public class StreamUtils {
 
@@ -8,6 +10,7 @@ public class StreamUtils {
         List<Integer> numbers1 = Arrays.asList(1, 3, -2, -4, -7, -3, -8, 12, 19, 6, 9, 10, 14);
         List<Integer> numbers2 = Arrays.asList(3, 9, 2, 8, 6, 5);
         List<Integer> numbers3 = Arrays.asList(5, 9, 1, 2, 3, 7, 5, 6, 7, 3, 7, 6, 8, 5, 4, 9, 6, 2);
+        String s = "Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit. Morbi nec mattis odio.";
 
 
         System.out.println(evenNumbers(numbers1));
@@ -15,6 +18,7 @@ public class StreamUtils {
         System.out.println(squaresIsGreater(numbers2,20));
         System.out.println(averageOddNumbers(numbers1));
         System.out.println(sumOddNumbers(numbers3));
+        System.out.println(upperCaseCharacter(s));
     }
 
     public static List<Integer> evenNumbers(List<Integer> list) {
@@ -48,5 +52,12 @@ public class StreamUtils {
                 .filter(x -> x%2!= 0)
                 .mapToInt(x-> Integer.parseInt(String.valueOf(x)))
                 .sum();
+    }
+
+    public static List<Character> upperCaseCharacter(String words){
+        return words.chars()
+                .mapToObj(x-> (char)x)
+                .filter(Character::isUpperCase)
+                .toList();
     }
 }
