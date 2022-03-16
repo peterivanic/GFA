@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.OptionalDouble;
+import java.util.*;
 import java.util.stream.Stream;
 
 public class StreamUtils {
@@ -11,14 +8,17 @@ public class StreamUtils {
         List<Integer> numbers2 = Arrays.asList(3, 9, 2, 8, 6, 5);
         List<Integer> numbers3 = Arrays.asList(5, 9, 1, 2, 3, 7, 5, 6, 7, 3, 7, 6, 8, 5, 4, 9, 6, 2);
         String s = "Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit. Morbi nec mattis odio.";
+        List<String> cities = Arrays.asList("ROME", "LONDON", "NAIROBI", "CALIFORNIA",
+                "ZURICH", "NEW DELHI", "AMSTERDAM", "ABU DHABI", "PARIS");
 
 
         System.out.println(evenNumbers(numbers1));
         System.out.println(squaresOfPositiveNumbers(numbers1));
-        System.out.println(squaresIsGreater(numbers2,20));
+        System.out.println(squaresIsGreater(numbers2, 20));
         System.out.println(averageOddNumbers(numbers1));
         System.out.println(sumOddNumbers(numbers3));
         System.out.println(upperCaseCharacter(s));
+        System.out.println(startWith(cities,'R'));
     }
 
     public static List<Integer> evenNumbers(List<Integer> list) {
@@ -47,17 +47,23 @@ public class StreamUtils {
                 .average();
     }
 
-    public static int sumOddNumbers(List<Integer> listOfNumbers){
-       return listOfNumbers.stream()
-                .filter(x -> x%2!= 0)
-                .mapToInt(x-> Integer.parseInt(String.valueOf(x)))
+    public static int sumOddNumbers(List<Integer> listOfNumbers) {
+        return listOfNumbers.stream()
+                .filter(x -> x % 2 != 0)
+                .mapToInt(x -> Integer.parseInt(String.valueOf(x)))
                 .sum();
     }
 
-    public static List<Character> upperCaseCharacter(String words){
+    public static List<Character> upperCaseCharacter(String words) {
         return words.chars()
-                .mapToObj(x-> (char)x)
+                .mapToObj(x -> (char) x)
                 .filter(Character::isUpperCase)
+                .toList();
+    }
+
+    public static List<String> startWith(List<String> words, char character) {
+        return words.stream()
+                .filter(x -> x.toUpperCase().startsWith(String.valueOf(character)))
                 .toList();
     }
 }
