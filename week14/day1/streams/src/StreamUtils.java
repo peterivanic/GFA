@@ -1,5 +1,5 @@
 import java.util.*;
-import java.util.stream.Collector;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -13,6 +13,7 @@ public class StreamUtils {
         List<String> cities = Arrays.asList("ROME", "LONDON", "NAIROBI", "CALIFORNIA",
                 "ZURICH", "NEW DELHI", "AMSTERDAM", "ABU DHABI", "PARIS");
         List<Character> characters = Arrays.asList('L', 'o', 'r', 'e', 'm', ' ', 'i', 'p', 's', 'u', 'm');
+        String s2 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.";
 
 
         System.out.println(evenNumbers(numbers1));
@@ -21,8 +22,9 @@ public class StreamUtils {
         System.out.println(averageOddNumbers(numbers1));
         System.out.println(sumOddNumbers(numbers3));
         System.out.println(upperCaseCharacter(s));
-        System.out.println(startWith(cities,'R'));
+        System.out.println(startWith(cities, 'R'));
         System.out.println(concatenated(characters));
+        System.out.println(specifyingTheFrequency(s2));
     }
 
     public static List<Integer> evenNumbers(List<Integer> list) {
@@ -71,9 +73,22 @@ public class StreamUtils {
                 .toList();
     }
 
-    public static String concatenated(List<Character> characters){
+    public static String concatenated(List<Character> characters) {
         return characters.stream()
                 .map(String::valueOf)
                 .collect(Collectors.joining());
     }
+
+    public static Map<Character, Long> specifyingTheFrequency(String text) {
+        var st = Stream.of(text);
+        return st
+                .flatMap(x -> x.chars().boxed())
+                .map(x -> (char) x.intValue())
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                .entrySet().stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .limit(2)
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+    }
+
 }
