@@ -1,4 +1,6 @@
 import java.util.*;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class StreamUtils {
@@ -10,6 +12,7 @@ public class StreamUtils {
         String s = "Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit. Morbi nec mattis odio.";
         List<String> cities = Arrays.asList("ROME", "LONDON", "NAIROBI", "CALIFORNIA",
                 "ZURICH", "NEW DELHI", "AMSTERDAM", "ABU DHABI", "PARIS");
+        List<Character> characters = Arrays.asList('L', 'o', 'r', 'e', 'm', ' ', 'i', 'p', 's', 'u', 'm');
 
 
         System.out.println(evenNumbers(numbers1));
@@ -19,6 +22,7 @@ public class StreamUtils {
         System.out.println(sumOddNumbers(numbers3));
         System.out.println(upperCaseCharacter(s));
         System.out.println(startWith(cities,'R'));
+        System.out.println(concatenated(characters));
     }
 
     public static List<Integer> evenNumbers(List<Integer> list) {
@@ -65,5 +69,11 @@ public class StreamUtils {
         return words.stream()
                 .filter(x -> x.toUpperCase().startsWith(String.valueOf(character)))
                 .toList();
+    }
+
+    public static String concatenated(List<Character> characters){
+        return characters.stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining());
     }
 }
