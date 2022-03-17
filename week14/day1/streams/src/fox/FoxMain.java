@@ -17,7 +17,7 @@ public class FoxMain {
         foxes.add(new Fox("Tom", "GREEN", 1));
 
         System.out.println(greenFoxes(foxes));
-
+        System.out.println(greenFoxesYoungerThat(foxes,5));
     }
 
     public static List<Fox> greenFoxes(List<Fox> foxes) {
@@ -26,4 +26,10 @@ public class FoxMain {
                 .toList();
     }
 
+    public static List<Fox> greenFoxesYoungerThat(List<Fox> foxes, Integer olderThan) {
+        return foxes.stream()
+                .filter(x -> x.getColor().equals("GREEN"))
+                .filter(x -> x.getAge() < olderThan)
+                .toList();
+    }
 }
