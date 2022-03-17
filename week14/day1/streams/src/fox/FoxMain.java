@@ -2,6 +2,8 @@ package fox;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class FoxMain {
 
@@ -18,6 +20,7 @@ public class FoxMain {
 
         System.out.println(greenFoxes(foxes));
         System.out.println(greenFoxesYoungerThat(foxes,5));
+        System.out.println(colorFrequency(foxes));
     }
 
     public static List<Fox> greenFoxes(List<Fox> foxes) {
@@ -31,5 +34,10 @@ public class FoxMain {
                 .filter(x -> x.getColor().equals("GREEN"))
                 .filter(x -> x.getAge() < olderThan)
                 .toList();
+    }
+
+    public static Map<String , Long> colorFrequency(List<Fox> foxes){
+        return foxes.stream()
+                .collect(Collectors.groupingBy(Fox::getColor,Collectors.counting()));
     }
 }
