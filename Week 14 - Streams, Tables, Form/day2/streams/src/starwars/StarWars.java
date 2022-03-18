@@ -5,8 +5,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import java.util.stream.Stream;
 
 public class StarWars {
 
@@ -43,8 +41,7 @@ public class StarWars {
                 .toString()
                 .replace("Optional","")
                 .replace("[","")
-                .replace("]","")
-                ;
+                .replace("]","");
        return persons
                .stream()
                .filter(x-> String.valueOf(x.getMas()).equals(heaviest))
