@@ -15,7 +15,8 @@ public class Words {
 
     public static void main(String[] args) {
 
-        String file = "C:\\GreenFox\\greenfox\\peterivanic\\week14\\day1\\streams\\src\\wordsfrequency\\javawiki.txt";
+        String file = "C:\\GreenFox\\greenfox\\peterivanic\\Week 14 - Streams, Tables, Form\\day1\\streams\\src\\" +
+                "wordsfrequency\\javawiki.txt";
         System.out.println(getWordFrequency(file));
     }
 
