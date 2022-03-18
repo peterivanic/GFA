@@ -3,8 +3,9 @@ package starwars;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 public class StarWars {
@@ -13,7 +14,7 @@ public class StarWars {
         String file = "C:\\GreenFox\\greenfox\\peterivanic\\Week 14 - Streams, Tables, Form\\" +
                 "day2\\streams\\src\\starwars\\SWuniverse.txt";
 
-
+        System.out.println(heaviest(Objects.requireNonNull(getPersons(file))));
 
     }
 
@@ -23,7 +24,6 @@ public class StarWars {
             return fileLines.stream()
                     .map(x -> x.replace(",", ";"))
                     .map(x -> x.replace("unknown", "0"))
-
                     .map(x -> {
                         String[] items = x.split(";");
                         return new Person(items[0],
@@ -33,9 +33,23 @@ public class StarWars {
             e.printStackTrace();
             return null;
         }
-
     }
 
 
-
+    public static String  heaviest(List<Person> persons) {
+        String heaviest = persons.stream()
+                .map(Person::getMas)
+                .max(Double::compareTo)
+                .toString()
+                .replace("Optional","")
+                .replace("[","")
+                .replace("]","")
+                ;
+       return persons
+               .stream()
+               .filter(x-> String.valueOf(x.getMas()).equals(heaviest))
+               .map(Person::getName)
+               .toList()
+               .toString();
+    }
 }
