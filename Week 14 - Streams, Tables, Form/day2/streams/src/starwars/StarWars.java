@@ -15,6 +15,7 @@ public class StarWars {
 
         System.out.println(heaviest(Objects.requireNonNull(getPersons(file))));
         System.out.println(averageHeightMale(Objects.requireNonNull(getPersons(file))));
+        System.out.println(averageHeightFemale(Objects.requireNonNull(getPersons(file))));
 
     }
 
@@ -57,6 +58,14 @@ public class StarWars {
                 .filter(x-> x.getGender().equals("male")||x.getGender().equals("hermaphrodite"))
                 .mapToDouble(Person::getHeight)
                 .average();
+    }
+
+    public static OptionalDouble averageHeightFemale(List<Person> persons){
+        return  persons.stream()
+                .filter(x-> x.getGender().equals("female")||x.getGender().equals("hermaphrodite"))
+                .mapToDouble(Person::getHeight)
+                .average();
+
     }
 
 }
