@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Objects;
+import java.util.OptionalDouble;
 
 public class StarWars {
 
@@ -13,6 +14,7 @@ public class StarWars {
                 "day2\\streams\\src\\starwars\\SWuniverse.txt";
 
         System.out.println(heaviest(Objects.requireNonNull(getPersons(file))));
+        System.out.println(averageHeightMale(Objects.requireNonNull(getPersons(file))));
 
     }
 
@@ -25,7 +27,7 @@ public class StarWars {
                     .map(x -> {
                         String[] items = x.split(";");
                         return new Person(items[0],
-                                Long.parseLong(items[1]), Double.parseDouble(items[2]), items[3], items[4], items[5], items[6]);
+                                Double.parseDouble(items[1]), Double.parseDouble(items[2]), items[3], items[4], items[5], items[6],items[7]);
                     }).toList();
         } catch (IOException e) {
             e.printStackTrace();
@@ -49,4 +51,12 @@ public class StarWars {
                .toList()
                .toString();
     }
+
+    public static OptionalDouble averageHeightMale(List<Person> persons){
+       return persons.stream()
+                .filter(x-> x.getGender().equals("male")||x.getGender().equals("hermaphrodite"))
+                .mapToDouble(Person::getHeight)
+                .average();
+    }
+
 }

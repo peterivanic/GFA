@@ -5,19 +5,21 @@ public class Person {
 //    name;height;mass;hair_color;skin_color;eye_color;birth_year;gender
 
     private String name;
-    private long height;
+    private double height;
     private double mas;
     private String hairColor;
+    private String skincolor;
     private String eyeColor;
     private String birthYear;
     private String gender;
 
 
-    public Person(String name, long height, double mas, String hairColor, String eyeColor, String birthYear, String gender) {
+    public Person(String name, double height, double mas, String hairColor,String skinColor, String eyeColor, String birthYear, String gender) {
         this.name = name;
         this.height = height;
         this.mas = mas;
         this.hairColor = hairColor;
+        this.skincolor = skinColor;
         this.eyeColor = eyeColor;
         this.birthYear = birthYear;
         this.gender = gender;
@@ -40,7 +42,7 @@ public class Person {
         return name;
     }
 
-    public long getHeight() {
+    public double getHeight() {
         return height;
     }
 
