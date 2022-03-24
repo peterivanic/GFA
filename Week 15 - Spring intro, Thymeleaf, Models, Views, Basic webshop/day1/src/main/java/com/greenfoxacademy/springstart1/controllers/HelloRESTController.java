@@ -7,7 +7,8 @@ public class HelloRESTController {
 
     @RequestMapping(value="/greeting",method = RequestMethod.GET)
     @ResponseBody
-    public Greeting greeting(@RequestParam String name){
+    public Greeting greeting(@RequestParam(defaultValue = "all") String name){
+
         return new Greeting(1,name);
     }
 
