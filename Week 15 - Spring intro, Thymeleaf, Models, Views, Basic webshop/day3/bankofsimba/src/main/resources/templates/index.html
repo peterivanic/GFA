@@ -8,7 +8,8 @@
 <body>
 <div th:each="account : ${accounts}">
     <h2
-            th:text="${account.getName()} + ' - ' +${account.getBalance()} + ' - ' + ${account.getAnimalType()}"
+            th:text="${accountStat.index} + ' - ' +${account.getName()} + ' - '
+             +${account.getBalance()} + ' - ' + ${account.getAnimalType()} + ' Is king: ' + ${account.isKing()}"
     ></h2>
 </div>
 </body>
