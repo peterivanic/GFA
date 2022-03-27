@@ -12,6 +12,9 @@ public class Greeting {
         this.name = content;
     }
 
+    public Greeting() {
+    }
+
     public AtomicLong getGreetcount() {
         return greetcount;
     }
