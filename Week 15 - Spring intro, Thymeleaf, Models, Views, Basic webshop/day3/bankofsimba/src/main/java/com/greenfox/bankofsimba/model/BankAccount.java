@@ -1,12 +1,14 @@
 package com.greenfox.bankofsimba.model;
 
+import java.util.Formatter;
+
 public class BankAccount {
 
     private String name;
-    private int balance;
+    private double balance;
     private String animalType;
 
-    public BankAccount(String name, int balance, String animalType) {
+    public BankAccount(String name, double balance, String animalType) {
         this.name = name;
         this.balance = balance;
         this.animalType = animalType;
@@ -16,8 +18,10 @@ public class BankAccount {
         return name;
     }
 
-    public int getBalance() {
-        return balance;
+    public String getBalance() {
+        Formatter formatter = new Formatter();
+        return  formatter.format("%.2f",balance).toString();
+
     }
 
     public String getAnimalType() {
