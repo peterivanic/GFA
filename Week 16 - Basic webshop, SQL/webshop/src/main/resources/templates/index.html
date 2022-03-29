@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Web shop</title>
+</head>
+<body>
+
+<header>
+    <h1>
+        My web shop
+    </h1>
+</header>
+
+<section>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Desription</th>
+            <th>Price</th>
+            <th>Quantity of stock</th>
+        </tr>
+        <tr th:each="item : ${items}" th:object="${item}">
+            <td th:text="*{name}"></td>
+            <td th:text="*{description}"></td>
+            <td th:text="*{price}"></td>
+            <td th:text="*{quantityOfStock}"></td>
+        </tr>
+    </table>
+
+</section>
+</body>
+</html>
