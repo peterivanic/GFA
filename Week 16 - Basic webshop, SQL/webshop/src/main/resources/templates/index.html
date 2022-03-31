@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
     <title>Web shop</title>
@@ -13,20 +13,40 @@
 </header>
 
 <section>
+    <br>
+    <form th:action="@{/}" method="get">
+        <input type="text"name="search">
+        <button type="submit">Search</button>
+    </form>
+    <br>
+
+    <div class="filters">
+        <a th:href="@{/onlyavalible}">Only avalible</a>
+        <a th:href="@{/cheapest-first}">Cheapest first</a>
+        <a th:href="@{/mostexpensive-first}">Most expensive first</a>
+    </div>
+    <br>
+
     <table>
         <tr>
+            <th>Order</th>
             <th>Name</th>
             <th>Desription</th>
             <th>Price</th>
             <th>Quantity of stock</th>
         </tr>
-        <tr th:each="item : ${items}" th:object="${item}">
+        <tr th:each="item, iter : ${items} " th:object="${item}">
+            <td th:text="|${iter.index + 1}.|"></td>
             <td th:text="*{name}"></td>
             <td th:text="*{description}"></td>
             <td th:text="*{price}"></td>
             <td th:text="*{quantityOfStock}"></td>
+            <td>
+            <a th:href="@{/detail/{item}(item=${iter.index})}">Wiev details</a>
+            </td>
         </tr>
     </table>
+
 
 </section>
 </body>

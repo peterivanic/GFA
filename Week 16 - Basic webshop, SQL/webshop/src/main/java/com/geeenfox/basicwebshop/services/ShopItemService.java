@@ -10,14 +10,14 @@ public class ShopItemService {
             List.of(new ShopItem(
                     "Running shoes",
                     "Nike running shoes for every day sport",
-                    1000,
+                    2000,
                     5
                     ),
                     new ShopItem(
                             "Printer",
                             "Some HP pprinter that will print pages",
                             3000,
-                            2
+                            0
                     ),
                     new ShopItem(
                             "Coca cola",
@@ -28,14 +28,20 @@ public class ShopItemService {
                     new ShopItem(
                             "Wokin",
                             "Chicken with fried rice and WOKIN sauce",
-                            1000,
+                            1500,
                             100
                     ),
+            new ShopItem(
+                    "T-shirt",
+                    "Blue with a corgi on bike",
+                    2000,
+                    5
+            ),
                     new ShopItem(
                             "T-shirt",
-                            "Blue with a corgi on bike",
-                            1000,
-                            5
+                            "Red with a fox",
+                            2500,
+                            2
                     ))
     );
 
