@@ -61,7 +61,8 @@ public class WebShopController {
     }
 
     @GetMapping("detail/{item}")
-    public String showDetail(@PathVariable("item") Integer itemOrder){
+    public String showDetail(Model model,@PathVariable("item") Integer itemOrder){
+        model.addAttribute("item",ShopItemService.getItems().get(itemOrder));
         return "detail";
     }
 
