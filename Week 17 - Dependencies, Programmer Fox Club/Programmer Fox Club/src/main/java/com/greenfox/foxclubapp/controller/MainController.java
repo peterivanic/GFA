@@ -1,20 +1,38 @@
 package com.greenfox.foxclubapp.controller;
 
+
+import com.greenfox.foxclubapp.service.FoxService;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.Objects;
 
 @Controller
+@RequiredArgsConstructor
 public class MainController {
 
-    @GetMapping("/")
-    public String getIndex (){
+    private @NonNull FoxService foxService;
+
+
+    @GetMapping
+    public String getHome(
+            Model model,
+            @RequestParam(
+                    value = "name", required = false) String name) {
+
+        if (Objects.isNull(name)) {
+            return "redirect:/login";
+        }
+        model.addAttribute("name", name);
         return "index";
     }
 
-    @GetMapping("/login")
-    public String getLogin(){
-        return "login";
-    }
+
+
 
 
 }
