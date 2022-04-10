@@ -1,6 +1,7 @@
 package com.greenfox.workshops.colors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -9,7 +10,7 @@ public class Colors implements CommandLineRunner {
 
     MyColor color;
     @Autowired
-    public Colors(MyColor color){
+    public Colors(@Qualifier("blueColor") MyColor color){
         this.color = color;
     }
 
