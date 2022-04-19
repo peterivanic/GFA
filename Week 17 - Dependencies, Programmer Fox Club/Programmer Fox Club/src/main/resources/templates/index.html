@@ -4,14 +4,18 @@
     <meta charset="UTF-8">
     <title>Fox club</title>
 </head>
-<body>
+<body th:object="${fox}">
 <div>
-    <a>Information</a>
+    <a th:href="@{/(name = *{name})}">Information</a><br>
+    <a th:href="@{/nutritionStore(name = *{name})}">Nutrition store</a><br>
+    <a th:href="@{/trickCenter(name = *{name})}">Trick center</a>
+
+
 </div>
 <img th:src= "@{/img/greenfox.png}" alt="fox image">
 <br>
 
-<h4 th:text="'This is '+ ${name} +'. Curently living on '"></h4>
+<h4 th:text="'This is '+ *{name} +'. Curently living on '+ *{food}+ ' and ' + *{drink}+ '. He knows '+ *{listOfTricks.size()}+' tricks.'"></h4>
 
 </body>
 </html>

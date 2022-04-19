@@ -15,4 +15,11 @@ public class FoxService {
         foxes.add(fox);
     }
 
+    public Fox getFox(String name){
+        return  foxes.stream()
+                .filter(x -> x.getName().equals(name))
+                .findFirst()
+                .orElse(null);
+    }
+
 }

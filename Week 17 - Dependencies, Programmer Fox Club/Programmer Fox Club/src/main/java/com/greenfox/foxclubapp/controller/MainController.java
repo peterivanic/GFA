@@ -1,6 +1,7 @@
 package com.greenfox.foxclubapp.controller;
 
 
+import com.greenfox.foxclubapp.model.Fox;
 import com.greenfox.foxclubapp.service.FoxService;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +18,6 @@ public class MainController {
 
     private @NonNull FoxService foxService;
 
-
     @GetMapping
     public String getHome(
             Model model,
@@ -27,7 +27,9 @@ public class MainController {
         if (Objects.isNull(name)) {
             return "redirect:/login";
         }
-        model.addAttribute("name", name);
+        Fox fox =  foxService.getFox(name);
+        model.addAttribute("fox", fox);
+
         return "index";
     }
 
