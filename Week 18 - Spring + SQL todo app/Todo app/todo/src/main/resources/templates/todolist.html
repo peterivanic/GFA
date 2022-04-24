@@ -8,10 +8,27 @@
 
 <h1>Today for today:</h1>
 
-<ul>
-    <li>Start the day</li>
-    <li>Finish workshop</li>
-</ul>
+<table>
+    <thead>
+    <tr>
+        <th> ID </th>
+        <th> done </th>
+        <th> title </th>
+        <th> urgent </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${#lists.isEmpty(todos)}">
+        <td colspan="2"> No Todos Available </td>
+    </tr>
+    <tr th:each="todo : ${todos}">
+        <td><span th:text="${todo.id}"> id </span></td>
+        <td><span th:text="${todo.done}"> done</span></td>
+        <td><span th:text="${todo.title}"> title </span></td>
+        <td><span th:text="${todo.urgent}"> title </span></td>
+    </tr>
+    </tbody>
+</table>
 
 </body>
 </html>
