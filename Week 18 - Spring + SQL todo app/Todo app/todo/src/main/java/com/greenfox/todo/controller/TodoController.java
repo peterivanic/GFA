@@ -1,6 +1,7 @@
 package com.greenfox.todo.controller;
 
 import com.greenfox.todo.repositories.TodoRepository;
+import com.greenfox.todo.service.TodoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,16 +9,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.stream.Collectors;
+
 @Controller
 @RequiredArgsConstructor
 public class TodoController {
 
 
-   final TodoRepository todoRepository;
+   private final TodoRepository todoRepository;
+   private final TodoService todoService;
+
 
     @GetMapping("/todo")
-    public String list(Model model){
-        model.addAttribute("todos",todoRepository.findAll());
+    public String listUndone(Model model){
+        model.addAttribute("todos",todoService.findAll().stream()
+                        .filter(x->!x.isDone())
+                        .collect(Collectors.toList())
+                        );
         return "todolist";
     }
 }
