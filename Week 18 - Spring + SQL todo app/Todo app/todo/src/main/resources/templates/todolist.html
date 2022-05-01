@@ -28,6 +28,12 @@
         <td><span th:text="${todo.done}"> done</span></td>
         <td><span th:text="${todo.title}"> title </span></td>
         <td><span th:text="${todo.urgent}"> title </span></td>
+        <td>
+        <a th:href="@{/delete(id = ${todo.id})}" href="/todoList">delete</a>
+        </td>
+        <td>
+<!--            <a th:href="@{/edit(id = ${todo.id})}" href="/edit">edit</a>-->
+        </td>
     </tr>
     </tbody>
 </table>
