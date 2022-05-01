@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Controller
@@ -21,10 +22,7 @@ public class TodoController {
 
     @GetMapping("/todo")
     public String listUndone(Model model){
-        model.addAttribute("todos",todoService.findAll().stream()
-                        .filter(x->!x.isDone())
-                        .collect(Collectors.toList())
-                        );
+        model.addAttribute("todos",todoService.findAll());
         return "todolist";
     }
 
@@ -47,5 +45,18 @@ public class TodoController {
         return "redirect:/todo";
     }
 
+    @GetMapping("/edit")
+    public String editTodo(Model model , @RequestParam("id") Long id){
+       Optional<Todo> todo = todoRepository.findById(id);
+       model.addAttribute("todo",todo.get());
+       return "edit";
+    }
 
+    @PostMapping("/edit")
+    public String saveTodo(@ModelAttribute ("todo") Todo todo){
+        todoRepository.deleteById(todo.getId());
+        todoRepository.save(todo);
+        return "redirect:/todo";
+
+    }
 }

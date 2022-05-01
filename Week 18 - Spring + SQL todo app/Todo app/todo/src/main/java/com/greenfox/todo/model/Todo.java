@@ -23,4 +23,7 @@ public class Todo {
         done = false;
     }
 
+    public Todo(String title) {
+        this.title = title;
+    }
 }
