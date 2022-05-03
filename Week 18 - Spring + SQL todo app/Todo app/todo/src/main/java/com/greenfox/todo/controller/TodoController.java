@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -51,13 +52,16 @@ public class TodoController {
     public String editTodo(Model model , @RequestParam("id") Long id){
        Optional<Todo> todo = todoRepository.findById(id);
        model.addAttribute("todo",todo.get());
+       model.addAttribute("assignees", assigneesRepository.findAll());
        return "edit";
     }
 
     @PostMapping("/edit")
-    public String saveTodo(@ModelAttribute ("todo") Todo todo){
+    public String saveTodo(@ModelAttribute ("todo") Todo todo,@RequestParam Long assignee_id){
         todoRepository.deleteById(todo.getId());
+        todo.setAssignee(assigneesRepository.findById(assignee_id).get());
         todoRepository.save(todo);
+
         return "redirect:/todo";
 
     }
