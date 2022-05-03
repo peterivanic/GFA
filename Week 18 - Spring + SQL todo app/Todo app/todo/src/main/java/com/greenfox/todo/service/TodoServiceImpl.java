@@ -20,7 +20,4 @@ public class TodoServiceImpl implements TodoService{
         return (List<Todo>) todoRepository.findAll();
     }
 
-    public List<Todo> findAllUndone() {
-        return (List<Todo>) todoRepository.findAll();
-    }
 }

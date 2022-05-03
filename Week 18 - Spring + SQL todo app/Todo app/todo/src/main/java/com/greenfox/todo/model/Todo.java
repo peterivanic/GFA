@@ -1,7 +1,6 @@
 package com.greenfox.todo.model;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -17,6 +16,9 @@ public class Todo {
     private String title;
     private boolean urgent;
     private boolean done;
+
+    @ManyToOne
+    private Assignee assignee;
 
     public Todo() {
         urgent = false;

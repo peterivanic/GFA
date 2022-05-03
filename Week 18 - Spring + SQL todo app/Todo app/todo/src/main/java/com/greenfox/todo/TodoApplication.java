@@ -1,6 +1,8 @@
 package com.greenfox.todo;
 
+import com.greenfox.todo.model.Assignee;
 import com.greenfox.todo.model.Todo;
+import com.greenfox.todo.repositories.AssigneesRepository;
 import com.greenfox.todo.repositories.TodoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
@@ -12,6 +14,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class TodoApplication implements CommandLineRunner {
 
 	final TodoRepository todoRepository;
+
+	private final AssigneesRepository assigneesRepository;
 	public static void main(String[] args) {
 		SpringApplication.run(TodoApplication.class, args);
 	}
@@ -29,9 +33,16 @@ public class TodoApplication implements CommandLineRunner {
 		todo3.setTitle("Look on MR");
 		todo4.setTitle("Take break");
 
+
 		todo1.setUrgent(true);
 		todo4.setDone(true);
 
+		Assignee peter = new Assignee("Peter");
+		Assignee patrik = new Assignee("Patrik");
+		todo2.setAssignee(peter);
+
+		assigneesRepository.save(peter);
+		assigneesRepository.save(patrik);
 
 		todoRepository.save(todo1);
 		todoRepository.save(todo2);

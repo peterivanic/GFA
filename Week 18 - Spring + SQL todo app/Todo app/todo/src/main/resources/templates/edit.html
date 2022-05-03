@@ -17,6 +17,10 @@
     <label for="cbDone">Done</label>
     <input name="checkbox" type="checkbox" id="cbDone" th:field="*{done}" ><br>
 
+    <input type="hidden" th:field="*{assignee}">
+    <label for="text">Assignee</label>
+    <input name="assignee" required type="text" id="cbAss" th:placeholder = "${todo.getAssignee()}" th:field="*{assignee}"><br>
+
     <button type="submit">Submit</button>
 </form>
 </body>

@@ -17,6 +17,7 @@
         <th> done </th>
         <th> title </th>
         <th> urgent </th>
+        <th> owner </th>
     </tr>
     </thead>
     <tbody>
@@ -27,7 +28,8 @@
         <td><span th:text="${todo.id}"> id </span></td>
         <td><span th:text="${todo.done}"> done</span></td>
         <td><span th:text="${todo.title}"> title </span></td>
-        <td><span th:text="${todo.urgent}"> title </span></td>
+        <td><span th:text="${todo.urgent}"> urgent </span></td>
+        <td><span th:text="${todo.assignee}"> assignee </span></td>
         <td>
         <a th:href="@{/delete(id = ${todo.id})}" href="/todoList">delete</a>
         </td>
@@ -35,8 +37,10 @@
             <a th:href="@{/edit(id = ${todo.id})}" href="/edit">edit</a>
         </td>
     </tr>
+
+
     </tbody>
 </table>
-
+<a th:href="@{/assignees}"  href="/assignees">List of Assignees</a>
 </body>
 </html>

@@ -1,6 +1,7 @@
 package com.greenfox.todo.controller;
 
 import com.greenfox.todo.model.Todo;
+import com.greenfox.todo.repositories.AssigneesRepository;
 import com.greenfox.todo.repositories.TodoRepository;
 import com.greenfox.todo.service.TodoService;
 import lombok.RequiredArgsConstructor;
@@ -9,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Controller
 @RequiredArgsConstructor
@@ -19,9 +19,11 @@ public class TodoController {
    private final TodoRepository todoRepository;
    private final TodoService todoService;
 
+   private final AssigneesRepository assigneesRepository;
+
 
     @GetMapping("/todo")
-    public String listUndone(Model model){
+    public String listAll(Model model){
         model.addAttribute("todos",todoService.findAll());
         return "todolist";
     }
@@ -58,5 +60,17 @@ public class TodoController {
         todoRepository.save(todo);
         return "redirect:/todo";
 
+    }
+
+    @GetMapping("/assignees")
+    public String listAllAssignees(Model model){
+        model.addAttribute("assignees",assigneesRepository.findAll());
+        return "assignees";
+    }
+
+    @GetMapping("/delAssignees")
+    public String deleteAss(@RequestParam ("id") Long assId){
+        assigneesRepository.deleteById(assId);
+        return "redirect:/assignees";
     }
 }
