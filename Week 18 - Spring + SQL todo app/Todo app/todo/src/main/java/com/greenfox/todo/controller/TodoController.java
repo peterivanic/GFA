@@ -1,5 +1,6 @@
 package com.greenfox.todo.controller;
 
+import com.greenfox.todo.model.Assignee;
 import com.greenfox.todo.model.Todo;
 import com.greenfox.todo.repositories.AssigneesRepository;
 import com.greenfox.todo.repositories.TodoRepository;
@@ -75,6 +76,18 @@ public class TodoController {
     @GetMapping("/delAssignees")
     public String deleteAss(@RequestParam ("id") Long assId){
         assigneesRepository.deleteById(assId);
+        return "redirect:/assignees";
+    }
+
+    @GetMapping("/newAssignee")
+    public String addAss(){
+        return "newAssignee";
+    }
+
+    @PostMapping("/newAssignee")
+    public String handleAss(@RequestParam ("text") String text ){
+        Assignee a = new Assignee(text);
+        assigneesRepository.save(a);
         return "redirect:/assignees";
     }
 }

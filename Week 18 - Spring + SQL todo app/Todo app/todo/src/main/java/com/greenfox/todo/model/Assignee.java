@@ -31,4 +31,8 @@ public class Assignee {
     public Assignee() {
     }
 
+    @Override
+    public String toString() {
+        return name;
+    }
 }

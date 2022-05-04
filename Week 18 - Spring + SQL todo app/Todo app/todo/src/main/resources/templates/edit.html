@@ -21,7 +21,6 @@
 
     <select  name="assignee_id" id="ass" >
         <option th:each=" ass : ${assignees}" th:value="${ass.id}" th:text="${ass.getName()}"></option>
-
     </select>
 
     <button type="submit">Submit</button>
