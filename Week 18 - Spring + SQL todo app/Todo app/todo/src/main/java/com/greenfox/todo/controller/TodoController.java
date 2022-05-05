@@ -62,6 +62,7 @@ public class TodoController {
         todoRepository.deleteById(todo.getId());
         todo.setAssignee(assigneesRepository.findById(assignee_id).get());
         todoRepository.save(todo);
+        assigneesRepository.save(assigneesRepository.findById(assignee_id).get());
 
         return "redirect:/todo";
 
@@ -89,5 +90,11 @@ public class TodoController {
         Assignee a = new Assignee(text);
         assigneesRepository.save(a);
         return "redirect:/assignees";
+    }
+
+    @GetMapping("/show")
+    public String show( Model model , @RequestParam ("id") long assId){
+        model.addAttribute("todos", assigneesRepository.findById(assId).get().getTodoSet());
+    return "todolist";
     }
 }

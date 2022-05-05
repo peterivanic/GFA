@@ -21,8 +21,8 @@
     </tr>
     <tr th:each="ass : ${assignees}">
         <td><span th:text="${ass.id}"> id </span></td>
-        <td><span th:text="${ass.name}"> done</span></td>
-        <td><span th:text="${ass.email}"> title </span></td>
+        <td><a th:text="${ass.name}" th:href ="@{/show(id = ${ass.id})}" > name</a></td>
+        <td><span th:text="${ass.email}"  > title </span></td>
         <td>
             <a th:href="@{/delAssignees(id = ${ass.id})}" href="/delAssignees">delete</a>
         </td>

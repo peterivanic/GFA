@@ -4,10 +4,9 @@ package com.greenfox.todo.model;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -21,6 +20,9 @@ public class Assignee {
     private String name;
 
     private String email;
+
+    @OneToMany(mappedBy = "assignee", cascade = CascadeType.ALL)
+    private Set<Todo> todoSet = new HashSet<>();
 
     public Assignee(String name) {
         this.name = name;

@@ -17,7 +17,7 @@ public class Todo {
     private boolean urgent;
     private boolean done;
 
-    @ManyToOne
+    @ManyToOne()
     private Assignee assignee;
 
     public Todo() {
