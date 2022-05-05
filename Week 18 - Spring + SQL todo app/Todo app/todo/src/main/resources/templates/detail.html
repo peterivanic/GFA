@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail</title>
+
+</head>
+<body>
+<h1>Todo detail</h1>
+<table>
+    <thead>
+    <tr>
+        <th> ID</th>
+        <th> title</th>
+        <th> description</th>
+        <th> done</th>
+        <th> urgent</th>
+        <th> created</th>
+        <th> owner</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:object="${todo}">
+        <td><span th:text="${todo.id}"> id </span></td>
+        <td><a th:text="${todo.title}"> title </a></td>
+        <td><span th:text="${todo.description}"> urgent </span></td>
+        <td><span th:text="${todo.done}"> done</span></td>
+        <td><span th:text="${todo.urgent}"> urgent </span></td>
+        <td><span th:text="${todo.created}"> urgent </span></td>
+        <td><span th:text="${todo.assignee}"> assignee </span></td>
+        <td>
+            <a th:href="@{/delete(id = ${todo.id})}" href="/todoList">delete</a>
+        </td>
+        <td>
+            <a th:href="@{/edit(id = ${todo.id})}" href="/edit">edit</a>
+        </td>
+    </tr>
+    </tbody>
+
+</table>
+
+<br>
+<a th:href="@{/todo}" href="/todo">All todos</a>
+</body>
+</html>

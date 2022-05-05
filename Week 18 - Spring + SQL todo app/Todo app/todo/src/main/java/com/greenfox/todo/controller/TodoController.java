@@ -97,4 +97,10 @@ public class TodoController {
         model.addAttribute("todos", assigneesRepository.findById(assId).get().getTodoSet());
     return "todolist";
     }
+
+    @GetMapping("/detail")
+    public String detail(Model model, @RequestParam ("id") long id ){
+        model.addAttribute("todo", todoRepository.findById(id).get());
+        return "detail";
+    }
 }

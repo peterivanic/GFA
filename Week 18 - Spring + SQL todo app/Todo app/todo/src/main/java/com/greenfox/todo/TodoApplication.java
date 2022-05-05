@@ -13,40 +13,41 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @RequiredArgsConstructor
 public class TodoApplication implements CommandLineRunner {
 
-	final TodoRepository todoRepository;
+    final TodoRepository todoRepository;
 
-	private final AssigneesRepository assigneesRepository;
-	public static void main(String[] args) {
-		SpringApplication.run(TodoApplication.class, args);
-	}
+    private final AssigneesRepository assigneesRepository;
 
-
-	@Override
-	public void run(String... args) throws Exception {
-		Todo todo1 = new Todo();
-		Todo todo2 = new Todo();
-		Todo todo3 = new Todo();
-		Todo todo4 = new Todo();
-
-		todo1.setTitle("Study");
-		todo2.setTitle("Finish workshop");
-		todo3.setTitle("Look on MR");
-		todo4.setTitle("Take break");
+    public static void main(String[] args) {
+        SpringApplication.run(TodoApplication.class, args);
+    }
 
 
-		todo1.setUrgent(true);
-		todo4.setDone(true);
+    @Override
+    public void run(String... args) throws Exception {
+        Todo todo1 = new Todo();
+        Todo todo2 = new Todo();
+        Todo todo3 = new Todo();
+        Todo todo4 = new Todo();
 
-		Assignee peter = new Assignee("Peter");
-		Assignee patrik = new Assignee("Patrik");
-		todo2.setAssignee(peter);
+        todo1.setTitle("Study");
+        todo2.setTitle("Finish workshop");
+        todo3.setTitle("Look on MR");
+        todo4.setTitle("Take break");
 
-		assigneesRepository.save(peter);
-		assigneesRepository.save(patrik);
+        todo2.setDescription("Finish all the tasks.");
 
-		todoRepository.save(todo1);
-		todoRepository.save(todo2);
-		todoRepository.save(todo3);
-		todoRepository.save(todo4);
-	}
+
+        todo1.setUrgent(true);
+        todo4.setDone(true);
+
+        Assignee peter = new Assignee("Peter");
+        todo2.setAssignee(peter);
+
+        assigneesRepository.save(peter);
+
+        todoRepository.save(todo1);
+        todoRepository.save(todo2);
+        todoRepository.save(todo3);
+        todoRepository.save(todo4);
+    }
 }

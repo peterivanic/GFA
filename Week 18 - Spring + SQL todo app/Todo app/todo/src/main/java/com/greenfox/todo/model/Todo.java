@@ -2,8 +2,10 @@ package com.greenfox.todo.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -14,11 +16,16 @@ public class Todo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String title;
+
+    private String description;
     private boolean urgent;
     private boolean done;
 
     @ManyToOne()
     private Assignee assignee;
+
+    @CreationTimestamp
+    private LocalDateTime created;
 
     public Todo() {
         urgent = false;

@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<h1>Today for today:</h1>
+<h1>Todos for today:</h1>
 
 <a th:href="@{/addTodo}" href="/addTodo">Add new todo</a>
 <a th:href="@{/todo}" href="/todo">All todos</a>
@@ -28,7 +28,7 @@
     <tr th:each="todo : ${todos}">
         <td><span th:text="${todo.id}"> id </span></td>
         <td><span th:text="${todo.done}"> done</span></td>
-        <td><span th:text="${todo.title}"> title </span></td>
+        <td><a th:text="${todo.title}" th:href="@{/detail(id = ${todo.id})}"> title </a></td>
         <td><span th:text="${todo.urgent}"> urgent </span></td>
         <td><span th:text="${todo.assignee}"> assignee </span></td>
         <td>
