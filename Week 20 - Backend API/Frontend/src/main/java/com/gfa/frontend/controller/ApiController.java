@@ -43,12 +43,12 @@ public class ApiController {
         return obj;
     }
 
-//    @GetMapping("/appenda")
-//    @ResponseStatus(code = HttpStatus.OK)
-//    public Map<String ,String> appendA(@RequestParam("word") String word){
-//        Map<String,String> obj = new HashMap<>();
-//        obj.put("appended",word.concat("a"));
-//        return obj;
-//    }
+    @GetMapping("/appenda")
+    @ResponseStatus(code = HttpStatus.OK)
+    public Map<String ,String> appendA(@RequestParam("word") String word){
+        Map<String,String> obj = new HashMap<>();
+        obj.put("appended",word.concat("a"));
+        return obj;
+    }
 
 }
