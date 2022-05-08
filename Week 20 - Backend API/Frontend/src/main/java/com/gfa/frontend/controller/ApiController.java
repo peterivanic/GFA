@@ -40,7 +40,6 @@ public class ApiController {
         }
         if (name.isPresent() && title.isPresent()) {
 
-            status = HttpStatus.OK;
             obj.put("welcome_message", String.format("Oh, hi there %s, my dear %s!", name.get(), title.get()));
         }
         return ResponseEntity.status(status).body(obj) ;
